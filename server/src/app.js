@@ -13,7 +13,7 @@ app.use(helmet());
 
 app.use(
   cors({
-    origin: "https://web-final-priject-2trimester-1.onrender.com",
+    origin: "https://web-final-priject-2trimester.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
