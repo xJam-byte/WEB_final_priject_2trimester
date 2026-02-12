@@ -36,7 +36,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/admin", adminRoutes);
-
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .send("Welcome to Task Manager API. Use /api/health for status.");
+});
 app.use(notFound);
 
 app.use(errorHandler);
