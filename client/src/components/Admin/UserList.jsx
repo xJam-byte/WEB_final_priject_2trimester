@@ -54,8 +54,10 @@ const UserList = () => {
               <tr key={user._id}>
                 <td>
                   <div className="user-info">
-                    <div className="user-avatar-small">{user.username.charAt(0).toUpperCase()}</div>
-                    <span>{user.username}</span>
+                    <div className="user-avatar-small">
+                      {user.username ? user.username.charAt(0).toUpperCase() : "?"}
+                    </div>
+                    <span>{user.username || "Unknown User"}</span>
                   </div>
                 </td>
                 <td>{user.email}</td>

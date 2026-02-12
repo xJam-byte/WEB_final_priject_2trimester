@@ -31,8 +31,8 @@ const AllTasksList = () => {
         {tasks.map((task) => (
           <div key={task._id} className={`task-card ${task.status ? "completed" : ""}`}>
             <div className="task-header">
-              <span className="task-user-badge" title={`Owner: ${task.user?.username}`}>
-                {task.user?.username?.charAt(0).toUpperCase()}
+              <span className="task-user-badge" title={`Owner: ${task.user?.username || "Unknown"}`}>
+                {task.user?.username ? task.user.username.charAt(0).toUpperCase() : "?"}
               </span>
               <span className={`status-badge ${task.status ? "done" : "pending"}`}>
                 {task.status ? "Completed" : "Pending"}
