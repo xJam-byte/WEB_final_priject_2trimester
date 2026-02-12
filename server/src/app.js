@@ -6,6 +6,7 @@ const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const taskRoutes = require("./routes/task.routes");
+const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 

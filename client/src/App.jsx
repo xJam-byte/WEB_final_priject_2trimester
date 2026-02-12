@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import TaskForm from './pages/TaskForm'
+import AdminDashboard from './pages/AdminDashboard'
 
 function App() {
   const { user, loading } = useAuth()
@@ -56,6 +57,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <TaskForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />

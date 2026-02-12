@@ -51,6 +51,17 @@ const Navbar = () => {
                   Dashboard
                 </Link>
               </li>
+              {user.role === 'admin' && (
+                <li>
+                  <Link
+                    to="/admin"
+                    className={isActive('/admin') ? 'active' : ''}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Admin Panel
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   to="/tasks/new"
