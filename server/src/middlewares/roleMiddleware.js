@@ -1,7 +1,3 @@
-/**
- * Middleware to check if user has required role
- * @param  {...string} roles - Allowed roles
- */
 const requireRole = (...roles) => {
   return (req, res, next) => {
     if (!req.user) {
@@ -22,9 +18,6 @@ const requireRole = (...roles) => {
   };
 };
 
-/**
- * Shorthand middleware for admin-only routes
- */
 const requireAdmin = requireRole("admin");
 
 module.exports = { requireRole, requireAdmin };

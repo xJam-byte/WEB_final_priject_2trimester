@@ -8,7 +8,6 @@ const {
 const { protect } = require("../middlewares/authMiddleware");
 const { requireAdmin } = require("../middlewares/roleMiddleware");
 
-// All routes are protected and require admin role
 router.use(protect);
 router.use(requireAdmin);
 

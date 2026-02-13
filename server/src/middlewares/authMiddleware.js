@@ -1,14 +1,10 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-/**
- * Middleware to verify JWT token and attach user to request
- */
 const protect = async (req, res, next) => {
   try {
     let token;
 
-    // Check for token in Authorization header
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
@@ -23,10 +19,8 @@ const protect = async (req, res, next) => {
       });
     }
 
-    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Attach user to request (without password)
     req.user = await User.findById(decoded.id).select("-password");
 
     if (!req.user) {

@@ -5,7 +5,6 @@ class EmailService {
     this.transporter = null;
     this.isConfigured = false;
 
-    // Initialize transporter if SMTP credentials are provided
     if (
       process.env.SMTP_HOST &&
       process.env.SMTP_USER &&
@@ -38,7 +37,6 @@ class EmailService {
       text: text || html.replace(/<[^>]*>/g, ""),
     };
 
-    // In development or if SMTP is not configured, log to console
     if (!this.isConfigured || process.env.NODE_ENV === "development") {
       console.log("=== EMAIL (DEV MODE) ===");
       console.log("To:", to);
@@ -46,7 +44,6 @@ class EmailService {
       console.log("Body:", text || html);
       console.log("========================");
 
-      // If not configured, just return success after logging
       if (!this.isConfigured) {
         return {
           success: true,
@@ -55,7 +52,6 @@ class EmailService {
       }
     }
 
-    // Send actual email if configured
     if (this.isConfigured) {
       try {
         const info = await this.transporter.sendMail(mailOptions);

@@ -15,7 +15,7 @@ const taskSchema = new mongoose.Schema(
     },
     status: {
       type: Boolean,
-      default: false, // false = not completed, true = completed
+      default: false,
     },
     dueDate: {
       type: Date,
@@ -31,7 +31,6 @@ const taskSchema = new mongoose.Schema(
   },
 );
 
-// Index for faster queries
 taskSchema.index({ user: 1, status: 1 });
 taskSchema.index({ user: 1, dueDate: 1 });
 

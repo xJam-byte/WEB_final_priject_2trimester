@@ -30,7 +30,6 @@ const updateProfile = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
 
-  // Check if new email is already taken by another user
   if (email && email.toLowerCase() !== user.email) {
     const emailExists = await User.findOne({ email: email.toLowerCase() });
     if (emailExists) {

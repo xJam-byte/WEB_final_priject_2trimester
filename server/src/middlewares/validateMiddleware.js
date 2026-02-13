@@ -1,10 +1,5 @@
 const Joi = require("joi");
 
-/**
- * Factory function to create validation middleware
- * @param {Joi.Schema} schema - Joi validation schema
- * @param {string} property - Request property to validate ('body', 'query', 'params')
- */
 const validate = (schema, property = "body") => {
   return (req, res, next) => {
     const { error, value } = schema.validate(req[property], {
@@ -25,15 +20,12 @@ const validate = (schema, property = "body") => {
       });
     }
 
-    // Replace request property with validated value
     req[property] = value;
     next();
   };
 };
 
-// Validation Schemas
 const schemas = {
-  // Auth schemas
   register: Joi.object({
     username: Joi.string().min(3).max(30).required().messages({
       "string.min": "Username must be at least 3 characters",
@@ -60,7 +52,6 @@ const schemas = {
     }),
   }),
 
-  // User schemas
   updateProfile: Joi.object({
     username: Joi.string().min(3).max(30).messages({
       "string.min": "Username must be at least 3 characters",
@@ -75,7 +66,6 @@ const schemas = {
       "object.min": "At least one field is required to update",
     }),
 
-  // Task schemas
   createTask: Joi.object({
     title: Joi.string().max(100).required().messages({
       "string.max": "Title cannot exceed 100 characters",
@@ -107,7 +97,6 @@ const schemas = {
       "object.min": "At least one field is required to update",
     }),
 
-  // Query schemas
   taskQuery: Joi.object({
     status: Joi.string().valid("true", "false"),
     sort: Joi.string().valid("dueDate", "-dueDate", "createdAt", "-createdAt"),
